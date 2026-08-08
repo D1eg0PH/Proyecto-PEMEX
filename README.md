@@ -1,4 +1,3 @@
-
 # Proyecto PEMEX
 
 ## Digitalización y gestión de órdenes de trabajo
@@ -6,6 +5,8 @@
 Sistema de escritorio desarrollado para **digitalizar el proceso de gestión de órdenes de trabajo**, reduciendo la dependencia de documentos impresos y el consumo de papel generado por el llenado, modificación, firma y almacenamiento físico de hojas.
 
 El proyecto busca transformar un proceso tradicional basado en **llenar, imprimir, firmar y archivar documentos** en un flujo de trabajo digital mediante archivos PDF.
+
+> **Nota:** este es un prototipo funcional desarrollado durante prácticas profesionales en PEMEX TAD Miahuatlán. No se implementó en producción debido a restricciones de infraestructura de red institucional (red privada sin acceso habilitado para el despliegue). El proyecto se entregó junto con un reporte técnico a la jefatura correspondiente.
 
 ### Objetivo
 
@@ -40,7 +41,7 @@ Permite:
 * Insertar texto directamente sobre el PDF.
 * Configurar fuente, tamaño y color del texto.
 * Insertar firmas.
-* Colocar el sello **“CERRADO PM SAP”**.
+* Colocar el sello **"CERRADO PM SAP"**.
 * Guardar el documento modificado.
 * Deshacer y rehacer acciones.
 
@@ -143,7 +144,7 @@ Esto permite sustituir la búsqueda manual entre documentos físicos por una con
 | -------------- | --------------------------------------------- |
 | Edición        | Inserción de texto en PDF                     |
 | Firmas         | Inserción de firma                            |
-| Cierre         | Sello “CERRADO PM SAP”                        |
+| Cierre         | Sello "CERRADO PM SAP"                        |
 | Visualización  | Renderizado y navegación de páginas           |
 | Zoom           | Ampliación y reducción del documento          |
 | Historial      | Deshacer y rehacer                            |
@@ -178,18 +179,21 @@ Proyecto-PEMEX/
 * Python 3.x
 * Paquetes NuGet del proyecto
 * Dependencias de Python
+* [Ghostscript](https://www.ghostscript.com/releases/gsdnld.html) (requerido por Magick.NET para procesar PDFs)
 
 ## Instalación
 
-### Editor de PDF
+Clona el repositorio:
 
 ```bash
 git clone https://github.com/D1eg0PH/Proyecto-PEMEX.git
 ```
 
+### Editor de PDF (C#)
+
 Abrir la solución del proyecto en Visual Studio, restaurar los paquetes NuGet y ejecutar la aplicación.
 
-### Gestor de PDFs
+### Gestor de PDFs (Python)
 
 Instalar las dependencias:
 
@@ -221,7 +225,7 @@ Los documentos pueden mantenerse organizados digitalmente, facilitando su consul
 
 ## Alcance
 
-El proyecto representa una solución de escritorio orientada a la **digitalización de procesos documentales**, utilizando PDF como formato principal para conservar la información de las órdenes de trabajo.
+El proyecto representa un **prototipo de escritorio** orientado a la digitalización de procesos documentales, utilizando PDF como formato principal para conservar la información de las órdenes de trabajo. Se validó su funcionamiento a nivel local; el despliegue en el entorno de producción de PEMEX quedó pendiente por las restricciones de infraestructura mencionadas arriba.
 
 ## Autor
 
