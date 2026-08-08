@@ -1,0 +1,2836 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ghostscript.NET</name>
+    </assembly>
+    <members>
+        <member name="T:Ghostscript.NET.GhostscriptDisplayDeviceHandler">
+            <summary>
+            Represents a base Ghostscript Display Device handler.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptDisplayDeviceHandler.#ctor(Ghostscript.NET.GhostscriptLibrary)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptDisplayDeviceHandler class.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptLibrary">
+            <summary>
+            Represents a native Ghostscript library.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptLibrary.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptLibrary class
+            from the native library represented as the memory buffer.
+            </summary>
+            <param name="library">Memory buffer representing native Ghostscript library.</param>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptLibrary.#ctor(Ghostscript.NET.GhostscriptVersionInfo)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptLibrary class
+            from the GhostscriptVersionInfo object.
+            </summary>
+            <param name="version">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptLibrary.#ctor(Ghostscript.NET.GhostscriptVersionInfo,System.Boolean)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptLibrary class
+            from the GhostscriptVersionInfo object.
+            </summary>
+            <param name="version">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+            <param name="fromMemory">Tells if the Ghostscript should be loaded from the memory or directly from the disk.</param>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptLibrary.Dispose">
+            <summary>
+            Releases all resources used by the Ghostscript.NET.GhostscriptLibrary instance.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptLibrary.Dispose(System.Boolean)">
+            <summary>
+            Releases all resources used by the Ghostscript.NET.GhostscriptLibrary instance.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptLibrary.Initialize">
+            <summary>
+            Get the native library symbols and map them to the appropriate functions/delegates.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptLibrary.ThrowIncompatibileNativeGhostscriptLibraryException">
+            <summary>
+            Throws friendly gsdll incompatibility message.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptLicense">
+            <summary>
+            Ghostscript license type.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptLicense.GPL">
+            <summary>
+            Open source releases.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptLicense.AFPL">
+            <summary>
+            Old open source releases.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptLicense.Artifex">
+            <summary>
+            Commercially licensed release.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptPdfInfo">
+            <summary>
+            Class that helps us to get various information about the PDF file.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.IO.Stream)">
+            <summary>
+            Returns Ink coverage for all pages.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="stream">Stream representing PDF document.</param>
+            <returns>A dictionary of a page numbers with the ink coverage.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.IO.Stream,Ghostscript.NET.GhostscriptVersionInfo)">
+            <summary>
+            Returns Ink coverage for all pages.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="stream">Stream representing PDF document.</param>
+            <param name="versionInfo">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+            <returns>A dictionary of a page numbers with the ink coverage.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Returns Ink coverage for specified page range.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="stream">Stream representing PDF document.</param>
+            <param name="firstPage">Designated start page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <param name="lastPage">Designated end page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <returns>Dictionary of page numbers with ink coverage.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.IO.Stream,System.Int32,System.Int32,Ghostscript.NET.GhostscriptVersionInfo)">
+            <summary>
+            Returns Ink coverage for specified page range.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="stream">Stream representing PDF document.</param>
+            <param name="firstPage">Designated start page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <param name="lastPage">Designated end page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <param name="versionInfo">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+            <returns>A dictionary of a page numbers with the ink coverage.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.String)">
+            <summary>
+            Returns Ink coverage for all pages.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="path">PDF file path.</param>
+            <returns>A dictionary of a page numbers with the ink coverage.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.String,Ghostscript.NET.GhostscriptVersionInfo)">
+            <summary>
+            Returns Ink coverage for all pages.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="path"></param>
+            <param name="versionInfo">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+            <returns>A dictionary of a page numbers with the ink coverage.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns Ink coverage for specified page range.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="path">PDF file path.</param>
+            <param name="firstPage">Designated start page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <param name="lastPage">Designated end page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <returns>A dictionary of a page numbers with the ink coverage.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPdfInfo.GetInkCoverage(System.String,System.Int32,System.Int32,Ghostscript.NET.GhostscriptVersionInfo)">
+            <summary>
+            Returns Ink coverage for specified page range.
+            The result is ink coverage for the CMYK inks, separately for each single page (for RGB colors, it does a silent conversion to CMYK color space internally).
+            This function is supported only in Ghostscript v9.05 or newer.
+            </summary>
+            <param name="path">PDF file path.</param>
+            <param name="firstPage">Designated start page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <param name="lastPage">Designated end page of the document. Pages of all documents in PDF collections are numbered sequentionally.</param>
+            <param name="versionInfo">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+            <returns>A dictionary of a page numbers with the ink coverage.</returns>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptPageInkCoverage">
+            <summary>
+            Ink coverage.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPageInkCoverage.Page">
+            <summary>
+            Gets page number.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPageInkCoverage.C">
+            <summary>
+            Gets percentage of Cyan color coverage.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPageInkCoverage.M">
+            <summary>
+            Gets percentage of Magenta color coverage.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPageInkCoverage.Y">
+            <summary>
+            Gets percentage of Yellow color coverage.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPageInkCoverage.K">
+            <summary>
+            Gets percentage of Black color coverage.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPageInkCoverage.IsValid">
+            <summary>
+            Gets if the ink coverage values are valid.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptPipedOutput">
+            <summary>
+            Represents a Ghostscript piped output.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPipedOutput.#ctor">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptPipedOutput class.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPipedOutput.Dispose">
+            <summary>
+            Releases all resources used by the Ghostscript.NET.GhostscriptPipedOutput instance.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPipedOutput.Dispose(System.Boolean)">
+            <summary>
+            Releases all resources used by the Ghostscript.NET.GhostscriptPipedOutput instance.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPipedOutput.ClientHandle">
+            <summary>
+            Gets pipes client handle as string. 
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptPipedOutput.ReadGhostscriptPipeOutput(System.Object)">
+            <summary>
+            Reads Ghostscript output.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptPipedOutput.Data">
+            <summary>
+            Gets the Ghostscript output.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptRectangle">
+            <summary>
+            Stores a set of four float values that represent lower-left and upper-right corner of rectangle.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptRectangle.#ctor">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptRectangle class.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptRectangle.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptRectangle class.
+            </summary>
+            <param name="llx">Lower-left x.</param>
+            <param name="lly">Lower-left y.</param>
+            <param name="urx">Upper-right x.</param>
+            <param name="ury">Upper-right y.</param>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptRectangle.llx">
+            <summary>
+            Gets lower-left x.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptRectangle.lly">
+            <summary>
+            Gets lower-left y.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptRectangle.urx">
+            <summary>
+            Gets upper-right x.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptRectangle.ury">
+            <summary>
+            Gets upper-right y.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptStdIO">
+            <summary>
+            Represents a base Ghostscript standard input output handler.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptStdIO.#ctor(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptStdIO class.
+            </summary>
+            <param name="handleStdIn">Whether or not to handle Ghostscript standard input.</param>
+            <param name="handleStdOut">Whether or not to handle Ghostscript standard output.</param>
+            <param name="handleStdErr">Whether or not to handle Ghostscript standard errors.</param>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptStdIO.gs_std_in(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            Standard input handler.
+            </summary>
+            <param name="handle">Standard input handle.</param>
+            <param name="pointer">Pointer to a memroy block.</param>
+            <param name="count">Number of bytes that standard input expects.</param>
+            <returns>Number of bytes returned.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptStdIO.gs_std_out(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            Handles standard output.
+            </summary>
+            <param name="handle">Standard output handle.</param>
+            <param name="pointer">Pointer to a memroy block.</param>
+            <param name="count">Number of bytes that standard output writes.</param>
+            <returns>Number of bytes read.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptStdIO.gs_std_err(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            Handles errors.
+            </summary>
+            <param name="handle">Errors handle.</param>
+            <param name="pointer">Pointer to a memory block.</param>
+            <param name="count">Number of bytes standard error writes.</param>
+            <returns>Number of bytes read.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptStdIO.StdIn(System.String@,System.Int32)">
+            <summary>
+            Abstract standard input method.
+            </summary>
+            <param name="input">Input data.</param>
+            <param name="count">Expected size of the input data.</param>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptStdIO.StdOut(System.String)">
+            <summary>
+            Abstract standard output method.
+            </summary>
+            <param name="output">Output data.</param>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptStdIO.StdError(System.String)">
+            <summary>
+            Abstract standard error method.
+            </summary>
+            <param name="error">Error data.</param>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptSwitchAttribute">
+            <summary>
+            Represents a GhostscriptSwitch attribute.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptSwitchAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptSwitchAttribute class.
+            </summary>
+            <param name="name">The Switch name.</param>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptSwitchAttribute.Name">
+            <summary>
+            Gets the switch name.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptSwitchValueAttribute">
+            <summary>
+            Represents a GhostscriptSwitchValue attribute.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptSwitchValueAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptSwitchValueAttribute class.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptSwitchValueAttribute.Value">
+            <summary>
+            Gets the switch value.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.GhostscriptVersionInfo">
+            <summary>
+            Represents a Ghostscript version information.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptVersionInfo.#ctor(System.Version,System.String,System.String,Ghostscript.NET.GhostscriptLicense)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptVersionInfo class.
+            </summary>
+            <param name="version">Ghostscript version.</param>
+            <param name="dllPath">Ghostscript native library path.</param>
+            <param name="libPath">Ghostscript lib path.</param>
+            <param name="licenseType">Ghostscript license type.</param>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptVersionInfo.Version">
+            <summary>
+            Gets Ghostscript version.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptVersionInfo.DllPath">
+            <summary>
+            Gets Ghostscript native library path.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptVersionInfo.LibPath">
+            <summary>
+            Gets Ghostscrip lib path.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptVersionInfo.LicenseType">
+            <summary>
+            Gets Ghostscript license type.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptVersionInfo.ToString">
+            <summary>
+            Returns GhostscriptVersionInfo string.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptVersionInfo.GetInstalledVersions">
+            <summary>
+            Gets installed Ghostscript versions list.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptVersionInfo.GetInstalledVersions(Ghostscript.NET.GhostscriptLicense)">
+            <summary>
+            Gets installed Ghostscript versions list.
+            </summary>
+            <returns>A GhostscriptVersionInfo list of the Ghostscript installations found on the local system.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptVersionInfo.GetLastInstalledVersion">
+            <summary>
+            Gets top installed Ghostscript version.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.GhostscriptVersionInfo.GetLastInstalledVersion(Ghostscript.NET.GhostscriptLicense,Ghostscript.NET.GhostscriptLicense)">
+            <summary>
+            Gets top installed Ghostscript version.
+            </summary>
+            <param name="licenseType">Serch for the specific Ghostscript version based on the Ghostscript license.</param>
+            <param name="licensePriority">If there are both license types installed, which one should have the prilorty.</param>
+            <returns>GhostscriptVersionInfo object of the last installed Ghostscript version based on priority license.</returns>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptVersionInfo.IsGhostscriptInstalled">
+            <summary>
+            Gets if the Ghostscript is installed on the local system.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.DISPLAY_FORMAT_COLOR">
+            <summary>
+            Define the color space alternatives.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.DISPLAY_FORMAT_ALPHA">
+            <summary>
+            Define whether alpha information, or an extra unused bytes is included
+            DISPLAY_ALPHA_FIRST and DISPLAY_ALPHA_LAST are not implemented
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.DISPLAY_FORMAT_DEPTH">
+            <summary>
+            Define the depth per component for DISPLAY_COLORS_GRAY,
+            DISPLAY_COLORS_RGB and DISPLAY_COLORS_CMYK,
+            or the depth per pixel for DISPLAY_COLORS_NATIVE
+            DISPLAY_DEPTH_2 and DISPLAY_DEPTH_12 have not been tested.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.DISPLAY_FORMAT_ENDIAN">
+            <summary>
+            Define whether Red/Cyan should come first,
+            or whether Blue/Black should come first
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.DISPLAY_FORMAT_FIRSTROW">
+            <summary>
+            Define whether the raster starts at the top or bottom of the bitmap
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.DISPLAY_FORMAT_555">
+            <summary>
+            Define whether packing RGB in 16-bits should use 555
+            or 565 (extra bit for green)
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.DISPLAY_FORMAT_ROW_ALIGN">
+            <summary>
+            Define the row alignment, which must be equal to or greater than
+            the size of a pointer.
+            The default (DISPLAY_ROW_ALIGN_DEFAULT) is the size of a pointer,
+            4 bytes (DISPLAY_ROW_ALIGN_4) on 32-bit systems or 8 bytes
+            (DISPLAY_ROW_ALIGN_8) on 64-bit systems.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.display_callback_v3">
+            <summary>
+            Display device callback structure.
+            
+            Note that for Windows, the display callback functions are
+            cdecl, not stdcall.  This differs from those in iapi.h.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback_v3.display_adjust_band_height">
+            <summary>
+            Added in V3 */
+            If non NULL, then this gives the callback provider a chance to
+            a) be informed of and b) control the bandheight used by the
+            display device. If a call to allocate the page mode bitmap fails
+            (either an internal allocation or a display_memalloc call), then
+            Ghostscript will look for the presence of a
+            display_rectangle_request callback. If it exists, then it will
+            attempt to use retangle request mode.
+            
+            As part of this, it will pick an appropriate bandheight. If
+            this callback exists, it will be called so the callback provider
+            can know (and, optionally, tweak) the bandheight to be used.
+            This is purely for performance. The callback should only ever
+            *reduce* the bandheight given here.
+            
+            Return the adjusted bandheight (or 0 for no change).
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback_v3.display_rectangle_request">
+            <summary>
+            Ask the callback for a rectangle to render (and a block to render
+            it in). Each subsequent call tells the caller that any previous
+            call has finished. To signal 'no more rectangles' return with
+            *w or *h = 0.
+            
+            On entry: *raster and *plane_raster are set to the standard
+              values. All other values are undefined.
+            On return: *memory should point to a block of memory to use.
+              Pixel (*ox,*oy) is the first pixel represented in that block.
+              *raster = the number of bytes difference between the address of
+              component 0 of Pixel(*ox,*oy) and the address of component 0 of
+              Pixel(*ox,1+*oy).
+              *plane_raster = the number of bytes difference between the
+              address of component 0 of Pixel(*ox,*oy) and the address of
+              component 1 of Pixel(*ox,*oy), if in planar mode, 0 otherwise.
+              *x, *y, *w, *h = rectangle requested within that memory block.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.display_callback">
+            <summary>
+            Display device callback structure.
+            
+            Note that for Windows, the display callback functions are
+            cdecl, not stdcall.  This differs from those in iapi.h.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.size">
+            <summary>
+            Size of this structure
+            Used for checking if we have been handed a valid structure
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.version_major">
+            <summary>
+            Major version of this structure
+            The major version number will change if this structure changes.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.version_minor">
+            <summary>
+            Minor version of this structure 
+            The minor version number will change if new features are added
+            without changes to this structure.  For example, a new color
+            format.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_open">
+            <summary>
+            New device has been opened 
+            This is the first event from this device.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_preclose">
+            <summary>
+            Device is about to be closed. 
+            Device will not be closed until this function returns. 
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_close">
+            <summary>
+            Device has been closed. 
+            This is the last event from this device. 
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_presize">
+            <summary>
+            Device is about to be resized. 
+            Resize will only occur if this function returns 0. 
+            raster is byte count of a row.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_size">
+            <summary>
+            Device has been resized. 
+            New pointer to raster returned in pimage
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_sync">
+            <summary>
+            flushpage
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_page">
+            <summary>
+            showpage 
+            If you want to pause on showpage, then don't return immediately
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_update">
+            <summary>
+            Notify the caller whenever a portion of the raster is updated.
+            This can be used for cooperative multitasking or for
+            progressive update of the display.
+            This function pointer may be set to NULL if not required.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_memalloc">
+            <summary>
+            Allocate memory for bitmap 
+            This is provided in case you need to create memory in a special
+            way, e.g. shared.  If this is NULL, the Ghostscript memory device
+            allocates the bitmap. This will only called to allocate the
+            image buffer. The first row will be placed at the address
+            returned by display_memalloc.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_memfree">
+            <summary>
+            Free memory for bitmap 
+            If this is NULL, the Ghostscript memory device will free the bitmap
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.display_callback.display_separation">
+            <summary>
+            Added in V2 
+            When using separation color space (DISPLAY_COLORS_SEPARATION),
+            give a mapping for one separation component.
+            This is called for each new component found.
+            It may be called multiple times for each component.
+            It may be called at any time between display_size
+            and display_close.
+            The client uses this to map from the separations to CMYK
+            and hence to RGB for display.
+            GS must only use this callback if version_major >= 2.
+            The unsigned short c,m,y,k values are 65535 = 1.0.
+            This function pointer may be set to NULL if not required.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_revision">
+            <summary>
+            Get version numbers and strings.
+            This is safe to call at any time.
+            You should call this first to make sure that the correct version
+            of the Ghostscript is being used.
+            pr is a pointer to a revision structure.
+            len is the size of this structure in bytes.
+            Returns 0 if OK, or if len too small (additional parameters
+            have been added to the structure) it will return the required
+            size of the structure.
+            </summary>
+            <param name="pr"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_new_instance">
+            <summary>
+            Create a new instance of Ghostscript.
+            This instance is passed to most other API functions.
+            The caller_handle will be provided to callback functions.
+            </summary>
+            <param name="pinstance"></param>
+            <param name="caller_handle"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_delete_instance">
+            <summary>
+            Destroy an instance of Ghostscript
+            Before you call this, Ghostscript must have finished.
+            If Ghostscript has been initialised, you must call gsapi_exit()
+            before gsapi_delete_instance.
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_set_stdio">
+            <summary>
+            Set the callback functions for stdio
+            The stdin callback function should return the number of
+            characters read, 0 for EOF, or -1 for error.
+            The stdout and stderr callback functions should return
+            the number of characters written.
+            If a callback address is NULL, the real stdio will be used.
+            </summary>
+            <param name="instance"></param>
+            <param name="stdin_fn"></param>
+            <param name="stdout_fn"></param>
+            <param name="stderr_fn"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_set_poll">
+            <summary>
+            Set the callback function for polling.
+            This is used for handling window events or cooperative
+            multitasking.  This function will only be called if
+            Ghostscript was compiled with CHECK_INTERRUPTS
+            as described in gpcheck.h.
+            </summary>
+            <param name="instance"></param>
+            <param name="poll_fn"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_set_display_callback">
+            <summary>
+            Set the display device callback structure.
+            If the display device is used, this must be called
+            after gsapi_new_instance() and before gsapi_init_with_args().
+            See gdevdisp.h for more details.
+            </summary>
+            <param name="instance"></param>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_set_arg_encoding">
+            <summary>
+            Set the encoding used for the args. By default we assume
+            'local' encoding. For windows this equates to whatever the current
+            codepage is. For linux this is utf8.
+            
+            Use of this API (gsapi) with 'local' encodings (and hence without calling
+            this function) is now deprecated!
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_init_with_args">
+            <summary>
+            Initialise the interpreter.
+            This calls gs_main_init_with_args() in imainarg.c
+            1. If quit or EOF occur during gsapi_init_with_args(), 
+               the return value will be e_Quit.  This is not an error. 
+               You must call gsapi_exit() and must not call any other
+               gsapi_XXX functions.
+            2. If usage info should be displayed, the return value will be e_Info
+               which is not an error.  Do not call gsapi_exit().
+            3. Under normal conditions this returns 0.  You would then 
+               call one or more gsapi_run_*() functions and then finish
+               with gsapi_exit().
+            </summary>
+            <param name="instance"></param>
+            <param name="argc"></param>
+            <param name="argv"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_exit">
+            <summary>
+            Exit the interpreter.
+            This must be called on shutdown if gsapi_init_with_args()
+            has been called, and just before gsapi_delete_instance().
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_stdio_callback">
+            <summary>
+            Callback function for stdio.
+            </summary>
+            <param name="handle"></param>
+            <param name="pointer"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ghostscript.NET.gsapi_pool_callback">
+            <summary>
+            Callback function for gsapi_set_poll function.
+            </summary>
+            <param name="handle"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_Fatal">
+            <summary>
+            Internal code for a fatal error.
+            gs_interpret also returns this for a .quit with a positive exit code.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_Quit">
+            <summary>
+            Internal code for the .quit operator.
+            The real quit code is an integer on the operand stack.
+            gs_interpret returns this only for a .quit with a zero exit code.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_InterpreterExit">
+            <summary>
+            Internal code for a normal exit from the interpreter.
+            Do not use outside of interp.c.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_RemapColor">
+            <summary>
+            Internal code that indicates that a procedure has been stored in the
+            remap_proc of the graphics state, and should be called before retrying
+            the current token.  This is used for color remapping involving a call
+            back into the interpreter -- inelegant, but effective.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_ExecStackUnderflow">
+            <summary>
+            Internal code to indicate we have underflowed the top block
+            of the e-stack.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_VMreclaim">
+            <summary>
+            Internal code for the vmreclaim operator with a positive operand.
+            We need to handle this as an error because otherwise the interpreter
+            won't reload enough of its state when the operator returns.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_NeedInput">
+            <summary>
+            Internal code for requesting more input from run_string.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.ierrors.e_Info">
+            <summary>
+            Internal code for a normal exit when usage info is displayed.
+            This allows Window versions of Ghostscript to pause until
+            the message can be read.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.ierrors.GetErrorName(System.Int32)">
+            <summary>
+            Returns error name.
+            </summary>
+            <param name="code">Return code from the Ghostscript.</param>
+            <returns>Error name.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.BufferHelper.IndexOf(System.Byte[],System.Byte[])">
+            <summary>
+            The Knuth-Morris-Pratt Pattern Matching Algorithm.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.NativeLibraryHelper">
+            <summary>
+            Class that helps us to get various information about native libraries.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.NativeLibraryHelper.GetImageFileMachineType(System.String)">
+            <summary>
+            Gets the image file machine type.
+            </summary>
+            <param name="path">Native library path.</param>
+            <returns>Image file machine type.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.NativeLibraryHelper.GetImageFileMachineType(System.Byte[])">
+            <summary>
+            Gets the image file machine type.
+            </summary>
+            <param name="buffer">Memory buffer representing native library.</param>
+            <returns>Image file machine type.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.NativeLibraryHelper.GetImageFileMachineType(System.IO.Stream)">
+            <summary>
+            Gets the image file machine type.
+            </summary>
+            <param name="srm">Stream representing native library.</param>
+            <returns>Image file machine type.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.NativeLibraryHelper.Is64BitLibrary(System.String)">
+            <summary>
+            Gets if native library is compiled as 64bit library.
+            </summary>
+            <param name="path">Native library path.</param>
+            <returns>True if native library is compiled as 64 bit library.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.NativeLibraryHelper.Is64BitLibrary(System.Byte[])">
+            <summary>
+            Gets if native library is compiled as 64bit library.
+            </summary>
+            <param name="buffer">Memory buffer representing native library.</param>
+            <returns>True if native library is compiled as 64 bit library.</returns>
+        </member>
+        <member name="M:Ghostscript.NET.NativeLibraryHelper.Is64BitMachineValue(System.UInt16)">
+            <summary>
+            Gets if machine value represents 64 bit machine.
+            </summary>
+            <param name="machine">IMAGE_FILE_HEADER->Machine value.</param>
+        </member>
+        <member name="T:Ghostscript.NET.Interpreter.GhostscriptInterpreter">
+            <summary>
+            Represents a Ghostscript interpreter.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.#ctor">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptInterpreter class.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptInterpreter class.
+            </summary>
+            <param name="library">Memory buffer representing native Ghostscript library.</param>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.#ctor(Ghostscript.NET.GhostscriptVersionInfo)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptInterpreter class.
+            </summary>
+            <param name="version">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.#ctor(Ghostscript.NET.GhostscriptVersionInfo,System.Boolean)">
+            <summary>
+            Initializes a new instance of the Ghostscript.NET.GhostscriptInterpreter class.
+            </summary>
+            <param name="version">GhostscriptVersionInfo instance that tells which Ghostscript library to use.</param>
+            <param name="fromMemory">Tells if the Ghostscript should be loaded from the memory or directly from the disk.</param>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.Dispose">
+            <summary>
+            Releases all resources used by the Ghostscript.NET.GhostscriptInterpreter instance.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.Dispose(System.Boolean)">
+            <summary>
+            Releases all resources used by the Ghostscript.NET.GhostscriptInterpreter instance.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.Initialize">
+            <summary>
+            Initializes a new instance of Ghostscript interpreter.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.Setup(Ghostscript.NET.GhostscriptStdIO,Ghostscript.NET.GhostscriptDisplayDeviceHandler)">
+            <summary>
+            Sets the stdio and display device callback handlers.
+            </summary>
+            <param name="stdIO">Stdio callback handler.</param>
+            <param name="displayDevice">DisplayDevice callback handler.</param>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.InitArgs(System.String[])">
+            <summary>
+            Initializes the interpreter.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.Run(System.String)">
+            <summary>
+            Runs a string.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.Run(System.IntPtr)">
+            <summary>
+            Runs a string.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Interpreter.GhostscriptInterpreter.RunFile(System.String)">
+            <summary>
+            Runs a PostScript file.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceInteractionSwitches.Batch">
+            <summary>
+            Causes Ghostscript to exit after processing all files named on the command line, rather than going into an 
+            interactive loop reading PostScript commands. Equivalent to putting -c quit at the end of the command line.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceInteractionSwitches.NoPagePrompt">
+            <summary>
+            Disables only the prompt, but not the pause, at the end of each page. This may be useful on PC displays that
+            get confused if a program attempts to write text to the console while the display is in a graphics mode.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceInteractionSwitches.NoPause">
+            <summary>
+            Disables the prompt and pause at the end of each page. Normally one should use this (along with -dBATCH) when
+            producing output on a printer or to a file; it also may be desirable for applications where another program is
+            "driving" Ghostscript.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceInteractionSwitches.NoPrompt">
+            <summary>
+            Disables the prompt printed by Ghostscript when it expects interactive input, as well as the end-of-page prompt
+            (-dNOPAGEPROMPT). This allows piping input directly into Ghostscript, as long as the data doesn't refer to currentfile.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceInteractionSwitches.Quiet">
+            <summary>
+            Suppresses routine information comments on standard output. This is currently necessary when redirecting 
+            device output to standard output.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceInteractionSwitches.ShortErrors">
+            <summary>
+            Makes certain error and information messages more Adobe-compatible.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.DelayBind">
+            <summary>
+            Causes bind to remember all its invocations, but not actually execute them until the .bindnow procedure is 
+            called. Useful only for certain specialized packages like pstotext that redefine operators. See the documentation
+            for .bindnow for more information on using this feature.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.DoPdfMarks">
+            <summary>
+            Causes pdfmark to be called for bookmarks, annotations, links and cropbox when processing PDF files. Normally, 
+            pdfmark is only called for these types for PostScript files or when the output device requests it (e.g. pdfwrite device).
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.NoBind">
+            <summary>
+            Disables the bind operator. Useful only for debugging.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.NoCache">
+            <summary>
+            Disables character caching. Useful only for debugging.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.NoGC">
+            <summary>
+            Suppresses the initial automatic enabling of the garbage collector in Level 2 systems. 
+            (The vmreclaim operator is not disabled.) Useful only for debugging.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.NoOuterSave">
+            <summary>
+            Suppresses the initial save that is used for compatibility with Adobe PS Interpreters that ordinarily 
+            run under a job server. If a job server is going to be used to set up the outermost save level, then 
+            -dNOOUTERSAVE should be used so that the restore between jobs will restore global VM as expected.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.NoSafer">
+            <summary>
+            (equivalent to -dDELAYSAFER). 
+            This flag disables SAFER mode until the .setsafe procedure is run. This is intended for clients or scripts 
+            that cannot operate in SAFER mode. If Ghostscript is started with -dNOSAFER or -dDELAYSAFER, PostScript 
+            programs are allowed to read, write, rename or delete any files in the system that are not protected by 
+            operating system permissions. This mode should be used with caution, and .setsafe should be run prior to 
+            running any PostScript file with unknown contents.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.Safer">
+            <summary>
+            Disables the deletefile and renamefile operators, and the ability to open piped commands (%pipe%cmd) at all.
+            Only %stdout and %stderr can be opened for writing. Disables reading of files other than %stdin, those given 
+            as a command line argument, or those contained on one of the paths given by LIBPATH and FONTPATH and specified
+            by the system params /FontResourceDir and /GenericResourceDir.
+            This mode also sets the .LockSafetyParams parameter of the default device, or the device specified with the 
+            -sDEVICE= switch to protect against programs that attempt to write to files using the OutputFile device parameter.
+            Note that since the device parameters specified on the command line (including OutputFile) are set prior to SAFER
+            mode, the -sOutputFile=... on the command line is unrestricted.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.Strict">
+            <summary>
+            Disables as many Ghostscript extensions as feasible, to be more helpful in debugging applications that produce 
+            output for Adobe and other RIPs.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDeviceOtherSwitches.WriteSystemDict">
+            <summary>
+            Leaves systemdict writable. This is necessary when running special utility programs such as font2c and pcharstr, 
+            which must bypass normal PostScript access protection.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.FixedMedia">
+            <summary>
+            Causes the media size to be fixed after initialization, forcing pages of other sizes or orientations
+            to be clipped. This may be useful when printing documents on a printer that can handle their requested
+            paper size but whose default is some other size. Note that -g automatically sets -dFIXEDMEDIA, 
+            but -sPAPERSIZE= does not.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.FixedResolution">
+            <summary>
+            Causes the media resolution to be fixed similarly. -r automatically sets -dFIXEDRESOLUTION.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.PSFitPage">
+            <summary>
+            The page size from the PostScript file setpagedevice operator, or one of the older statusdict page size 
+            operators (such as letter or a4) will be rotated, scaled and centered on the "best fit" page size from 
+            those availiable in the InputAttributes list. The -dPSFitPage is most easily used to fit pages when used
+            with the -dFIXEDMEDIA option. This option is also set by the -dFitPage option.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.Orient1">
+            <summary>
+            Defines the meaning of the 0 and 1 orientation values for the setpage[params] compatibility operators. 
+            The default value of ORIENT1 is true (set in gs_init.ps), which is the correct value for most files that
+            use setpage[params] at all, namely, files produced by badly designed applications that "know" that the 
+            output will be printed on certain roll-media printers: these applications use 0 to mean landscape and 1 
+            to mean portrait. -dORIENT1=false declares that 0 means portrait and 1 means landscape, which is the 
+            convention used by a smaller number of files produced by properly written applications.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.DeviceWidthPoints">
+            <summary>
+            Sets the initial page width to desired value respectively, specified in 1/72" units.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.DeviceHeightPoints">
+            <summary>
+            Sets the initial page height to desired value respectively, specified in 1/72" units.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.DefaultPaperSize">
+            <summary>
+            This value will be used to replace the device default papersize ONLY if the default papersize for the device
+            is 'letter' or 'a4' serving to insulate users of A4 or 8.5x11 from particular device defaults (the collection
+            of contributed drivers in Ghostscript vary as to the default size).
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePageSwitches.FitPage">
+            <summary>
+            This is a "convenience" operator that sets the various options to perform page fitting for specific file types.
+            This option sets the -dEPSFitPage, -dPDFFitPage, and the -dFitPage options.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePdfSwitches.FirstPage">
+            <summary>
+            Begins interpreting on the designated page of the document. Pages of all documents in PDF collections are numbered sequentionally.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptDevicePdfSwitches.LastPage">
+            <summary>
+            Stops interpreting after the designated page of the document. Pages of all documents in PDF collections are numbered sequentionally.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptImageDeviceAlphaBits.V_1">
+            <summary>
+            1.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptImageDeviceAlphaBits.V_2">
+            <summary>
+            2.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptImageDeviceAlphaBits.V_4">
+            <summary>
+            4.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptImageDevice.Resolution">
+            <summary>
+            This option sets the resolution of the output file in dots per inch. The default value if you don't specify this options is usually 72 dpi.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptImageDevice.ResolutionXY">
+            <summary>
+            This option sets the resolution of the output file in dots per inch. The default value if you don't specify this options is usually 72 dpi.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptImageDevice.TextAlphaBits">
+            <summary>
+            These option control the use of subsample antialiasing. 
+            Their use is highly recommended for producing high quality rasterizations of the input files. 
+            The size of the subsampling box n should be 4 for optimum output, but smaller values can be used for faster rendering. 
+            Antialiasing is enabled separately for text and graphics content.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptImageDevice.GraphicsAlphaBits">
+            <summary>
+            These option control the use of subsample antialiasing. 
+            Their use is highly recommended for producing high quality rasterizations of the input files. 
+            The size of the subsampling box n should be 4 for optimum output, but smaller values can be used for faster rendering. 
+            Antialiasing is enabled separately for text and graphics content.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptJpegDeviceType.Jpeg">
+            <summary>
+            Produce color JPEG files.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptJpegDeviceType.JpegGray">
+            <summary>
+            Produce grayscale JPEG files.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptJpegDevice.JpegQuality">
+            <summary>
+            (integer from 0 to 100, default 75)
+            Set the quality level value according to the widely used IJG quality scale, which balances the extent of compression 
+            against the fidelity of the image when reconstituted. Lower values drop more information from the image to achieve 
+            higher compression, and therefore have lower quality when reconstituted.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.GhostscriptJpegDevice.QualityFactor">
+            <summary>
+            (float from 0.0 to 1.0).
+            Adobe's QFactor quality scale, which you may use in place of JPEGQ above. The QFactor scale is used by PostScript's
+            DCTEncode filter but is nearly unheard-of elsewhere.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptPngDeviceType.Png16m">
+            <summary>
+            24bit RGB color.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptPngDeviceType.PngAlpha">
+            <summary>
+            Transparency support.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptPngDeviceType.PngGray">
+            <summary>
+            Grayscale output.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptPngDeviceType.Png256">
+            <summary>
+            8-bit color.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptPngDeviceType.Png16">
+            <summary>
+            4-bit color.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptPngDeviceType.PngMono">
+            <summary>
+            Black-and-white only.
+            </summary>
+        </member>
+        <member name="F:Ghostscript.NET.GhostscriptPngDeviceType.PngMonoD">
+            <summary>
+            Black-and-white, but the output is formed from an internal 8 bit grayscale rendering which is then error diffused and converted down to 1bpp.
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.PDFA3Converter">
+            <summary>
+            This class allows to convert an existing PDF file into PDF A/3 with ZUGFeRD/ XRechnung attached to it.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.PDFA3Converter.#ctor(System.String)">
+            <summary>
+            The constructor of the class accepts both input and output path for PDF conversion.
+            </summary>
+            <param name="gsdll">PDF input path </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.PDFA3Converter.SetEmbeddedXMLFile(System.String)">
+            <summary>
+            Reads the xml file from the given path in order to embed it into the PDF A/3 file.
+            </summary>
+                ''' <param name="xmlFilePath"></param>       
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.PDFA3Converter.WritePDFMark">
+            <summary>
+            Creates a Postscript file or - more exact: PDFMark file - which is interpreted by Ghostscript and converts file into PDF-A/3
+            </summary>        
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.PDFA3Converter.ConvertToPDFA3(System.String,System.String)">
+            <summary>
+            Converts a PDF file into PDF A/3 and attaches the given xml invoice
+            
+            <param name="sourcePDFPath">PDF input path </param>
+            <param name="targetPDFPath">PDF-A/3 output path</param>  
+            <returns>True if successful, false otherwise</returns>
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.BankDetails">
+            <summary>
+            provides e.g. the IBAN to transfer money to :-)
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.BankDetails.setIBAN(System.String)">
+            <summary>
+            Sets the IBAN "ID", which means that it only needs to be a way to uniquely
+            identify the IBAN. Of course you will specify your own IBAN in full length but
+            if you deduct from a customer's account you may e.g. leave out the first or last
+            digits so that nobody spying on the invoice gets to know the complete number </summary>
+            <param name="IBAN"> the "IBAN ID", i.e. the IBAN or parts of it </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.BankDetails.setBIC(System.String)">
+             <summary>
+            *
+             The bank identifier. Bank name is no longer neccessary in SEPA. </summary>
+             <param name="BIC"> the bic code </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.BankDetails.getOwnBIC">
+             <summary>
+            *
+              getOwn... methods will be removed in the future in favor of Tradeparty (e.g. Sender) class
+             
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.BankDetails.setAccountName(System.String)">
+            <summary>
+            set Holder </summary>
+            <param name="name"> account name (usually account holder if != sender) </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact">
+             <summary>
+            *
+             a named contact person in an organisation
+             for the organisation/company itsel please </summary>
+             <seealso cref="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty"/>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.#ctor(System.String,System.String,System.String)">
+             <summary>
+            *
+             default constructor.
+             Name, phone and email of sender contact person are e.g. required by XRechnung </summary>
+             <param name="name"> full name of the contact </param>
+             <param name="phone"> full phone number </param>
+             <param name="email"> email address of the contact </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            *
+             complete specification of a named contact with a different address </summary>
+             <param name="name"> full name </param>
+             <param name="phone"> full phone number </param>
+             <param name="email"> full email </param>
+             <param name="street"> street+number </param>
+             <param name="zip"> postcode </param>
+             <param name="location"> city </param>
+             <param name="country"> two-letter iso code </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.#ctor(System.Xml.XmlNodeList)">
+             <summary>
+            *
+             XML parsing constructor </summary>
+             <param name="nodes"> the nodelist returned e.g. from xpath </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setName(System.String)">
+            <summary>
+            the first and last name of the contact
+            </summary>
+            <param name="name"> first and last name </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setPhone(System.String)">
+             <summary>
+            *
+             complete phone number of the contact </summary>
+             <param name="phone"> the complete phone number </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setFax(System.String)">
+             <summary>
+            *
+             (optional) complete fax number </summary>
+             <param name="fax"> complete fax number of the contact </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setEMail(System.String)">
+             <summary>
+            *
+             personal email address of the contact person </summary>
+             <param name="email"> the email address of the contact </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setZIP(System.String)">
+             <summary>
+            *
+             the postcode, if the address is different to the organisation </summary>
+             <param name="zip"> the postcode of the contact </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setStreet(System.String)">
+            <summary>
+            street and number, if the address is different to the organisation
+            </summary>
+            <param name="street"> street and number of the contact </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setLocation(System.String)">
+             <summary>
+            *
+             city of the contact person, if different from organisation </summary>
+             <param name="location"> city </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact.setCountry(System.String)">
+             <summary>
+            *
+             two-letter ISO country code of the contact, if different from organisation </summary>
+             <param name="country"> two-letter iso code </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getDocumentName">
+             appears in /rsm:CrossIndustryDocument/rsm:HeaderExchangedDocument/ram:Name
+            
+             @return Name of document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getNumber">
+            		 *
+            		 *
+            		 * @return Code number of Document type, e.g. "380" for invoiceF
+            		 *	String getDocumentCode() {
+            			return DocumentCodeTypeConstants.INVOICE;
+            		}
+             Number, typically invoice number of the invoice
+            
+             @return invoice number
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getIssueDate">
+             the date when the invoice was created
+            
+             @return when the invoice was created
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getDueDate">
+             when the invoice is to be paid
+            
+             @return when the invoice is to be paid
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getSender">
+             the sender of the invoice
+            
+             @return the contact person at the supplier side
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getSubjectNote">
+             subject of the document e.g. invoice and order
+             number as human readable text
+            
+             @return string with document subject
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getRecipient">
+             the recipient
+            
+             @return the recipient of the invoice
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getTradeSettlementPayment">
+            the creditors payment informations
+            @deprecated use getTradeSettlement
+            @return an array of IZUGFeRDTradeSettlementPayment
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getTradeSettlement">
+             the payment information for any payment means
+            
+             @return an array of IZUGFeRDTradeSettlement
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getOwnTaxID">
+             Tax ID (not VAT ID) of the sender
+            
+             @return Tax ID (not VAT ID) of the sender
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getOwnVATID">
+             VAT ID (Umsatzsteueridentifikationsnummer) of the sender
+            
+             @return VAT ID (Umsatzsteueridentifikationsnummer) of the sender
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getOwnForeignOrganisationID">
+             supplier identification assigned by the costumer
+            
+             @return the sender's identification
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getDeliveryDate">
+             get delivery date
+            
+             @return the day the goods have been delivered
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getCurrency">
+             get main invoice currency used on the invoice
+            
+             @return three character currency of this invoice
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getPaymentTermDescription">
+             get payment term descriptional text e.g. Bis zum 22.10.2015 ohne Abzug
+            
+             @return get payment terms
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getPaymentTerms">
+             get payment terms. if set, getPaymentTermDescription() and getDueDate() are
+             ignored
+            
+             @return the IZUGFeRDPaymentTerms of the invoice
+            
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.rebateAgreementExists">
+             returns if a rebate agreements exists
+            
+             @return true if a agreement exists
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getReferenceNumber">
+             get reference document number typically used for Invoice Corrections Will be added as IncludedNote in comfort profile
+            
+             @return the ID of the document this document refers to
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getShipToOrganisationID">
+             consignee identification (identification of the organisation the goods are shipped to [assigned by the costumer])
+            
+             @return the sender's identification
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getShipToOrganisationName">
+             consignee name (name of the organisation the goods are shipped to)
+            
+             @return the consignee's organisation name
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getShipToStreet">
+             consignee street address (street of the organisation the goods are shipped to)
+            
+             @return consignee street address
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getShipToZIP">
+             consignee street postal code (postal code of the organisation the goods are shipped to)
+            
+             @return consignee postal code
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getShipToLocation">
+             consignee city (city of the organisation the goods are shipped to)
+            
+             @return the consignee's city
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getShipToCountry">
+             consignee two digit country code (country code of the organisation the goods are shipped to)
+            
+             @return the consignee's two character country iso code
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getSellerOrderReferencedDocumentID">
+             get the ID of the SellerOrderReferencedDocument, which sits in the ApplicableSupplyChainTradeAgreement/ApplicableHeaderTradeAgreement
+            
+             @return the ID of the document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getBuyerOrderReferencedDocumentID">
+             get the ID of the BuyerOrderReferencedDocument, which sits in the ApplicableSupplyChainTradeAgreement
+            
+             @return the ID of the document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getInvoiceReferencedDocumentID">
+             get the ID of the preceding invoice, which is e.g. to be corrected if this is a correction
+            
+             @return the ID of the document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getBuyerOrderReferencedDocumentIssueDateTime">
+             get the issue timestamp of the BuyerOrderReferencedDocument, which sits in the ApplicableSupplyChainTradeAgreement
+            
+             @return the IssueDateTime in format CCYY-MM-DDTHH:MM:SS
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getTotalPrepaidAmount">
+             get the TotalPrepaidAmount located in SpecifiedTradeSettlementMonetarySummation (v1) or SpecifiedTradeSettlementHeaderMonetarySummation (v2)
+            
+             @return the total sum (incl. VAT) of prepayments, i.e. the difference between GrandTotalAmount and DuePayableAmount
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction.getNotes">
+            		 * get additional referenced documents acccording to BG-24 XRechnung (Rechnungsbegruendende Unterlagen),
+            		 * i.e. ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument
+            		 *
+            		 * @return a array of objects from class FileAttachment
+            		 
+            		FileAttachment[] getAdditionalReferencedDocuments() {
+            			return null;
+            		}
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getDocumentName">
+             appears in /rsm:CrossIndustryDocument/rsm:HeaderExchangedDocument/ram:Name
+            
+             @return Name of document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getNumber">
+            		 *
+            		 *
+            		 * @return Code number of Document type, e.g. "380" for invoiceF
+            		 *	String getDocumentCode() {
+            			return DocumentCodeTypeConstants.INVOICE;
+            		}
+             Number, typically invoice number of the invoice
+            
+             @return invoice number
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getIssueDate">
+             the date when the invoice was created
+            
+             @return when the invoice was created
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getDueDate">
+             when the invoice is to be paid
+            
+             @return when the invoice is to be paid
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getSender">
+             the sender of the invoice
+            
+             @return the contact person at the supplier side
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getSubjectNote">
+             subject of the document e.g. invoice and order
+             number as human readable text
+            
+             @return string with document subject
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getRecipient">
+             the recipient
+            
+             @return the recipient of the invoice
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getTradeSettlementPayment">
+            the creditors payment informations
+            @deprecated use getTradeSettlement
+            @return an array of IZUGFeRDTradeSettlementPayment
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getTradeSettlement">
+             the payment information for any payment means
+            
+             @return an array of IZUGFeRDTradeSettlement
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getOwnTaxID">
+             Tax ID (not VAT ID) of the sender
+            
+             @return Tax ID (not VAT ID) of the sender
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getOwnVATID">
+             VAT ID (Umsatzsteueridentifikationsnummer) of the sender
+            
+             @return VAT ID (Umsatzsteueridentifikationsnummer) of the sender
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getOwnForeignOrganisationID">
+             supplier identification assigned by the costumer
+            
+             @return the sender's identification
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getDeliveryDate">
+             get delivery date
+            
+             @return the day the goods have been delivered
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getCurrency">
+             get main invoice currency used on the invoice
+            
+             @return three character currency of this invoice
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getPaymentTermDescription">
+             get payment term descriptional text e.g. Bis zum 22.10.2015 ohne Abzug
+            
+             @return get payment terms
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getPaymentTerms">
+             get payment terms. if set, getPaymentTermDescription() and getDueDate() are
+             ignored
+            
+             @return the IZUGFeRDPaymentTerms of the invoice
+            
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.rebateAgreementExists">
+             returns if a rebate agreements exists
+            
+             @return true if a agreement exists
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getReferenceNumber">
+             get reference document number typically used for Invoice Corrections Will be added as IncludedNote in comfort profile
+            
+             @return the ID of the document this document refers to
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getShipToOrganisationID">
+             consignee identification (identification of the organisation the goods are shipped to [assigned by the costumer])
+            
+             @return the sender's identification
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getShipToOrganisationName">
+             consignee name (name of the organisation the goods are shipped to)
+            
+             @return the consignee's organisation name
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getShipToStreet">
+             consignee street address (street of the organisation the goods are shipped to)
+            
+             @return consignee street address
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getShipToZIP">
+             consignee street postal code (postal code of the organisation the goods are shipped to)
+            
+             @return consignee postal code
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getShipToLocation">
+             consignee city (city of the organisation the goods are shipped to)
+            
+             @return the consignee's city
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getShipToCountry">
+             consignee two digit country code (country code of the organisation the goods are shipped to)
+            
+             @return the consignee's two character country iso code
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getSellerOrderReferencedDocumentID">
+             get the ID of the SellerOrderReferencedDocument, which sits in the ApplicableSupplyChainTradeAgreement/ApplicableHeaderTradeAgreement
+            
+             @return the ID of the document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getBuyerOrderReferencedDocumentID">
+             get the ID of the BuyerOrderReferencedDocument, which sits in the ApplicableSupplyChainTradeAgreement
+            
+             @return the ID of the document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getInvoiceReferencedDocumentID">
+             get the ID of the preceding invoice, which is e.g. to be corrected if this is a correction
+            
+             @return the ID of the document
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getBuyerOrderReferencedDocumentIssueDateTime">
+             get the issue timestamp of the BuyerOrderReferencedDocument, which sits in the ApplicableSupplyChainTradeAgreement
+            
+             @return the IssueDateTime in format CCYY-MM-DDTHH:MM:SS
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getTotalPrepaidAmount">
+             get the TotalPrepaidAmount located in SpecifiedTradeSettlementMonetarySummation (v1) or SpecifiedTradeSettlementHeaderMonetarySummation (v2)
+            
+             @return the total sum (incl. VAT) of prepayments, i.e. the difference between GrandTotalAmount and DuePayableAmount
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ExportableTransaction.getNotes">
+            		 * get additional referenced documents acccording to BG-24 XRechnung (Rechnungsbegruendende Unterlagen),
+            		 * i.e. ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument
+            		 *
+            		 * @return a array of objects from class FileAttachment
+            		 
+            		FileAttachment[] getAdditionalReferencedDocuments() {
+            			return null;
+            		}
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice">
+             <summary>
+            *
+             An invoice, with fluent setters </summary>
+             <seealso cref="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction"/>
+             Use this if you want to implement an interface instead.
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setRecipient(Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty)">
+            <summary>
+            required.
+            sets the invoice receiving institution = invoicee </summary>
+            <param name="recipient"> the invoicee organisation </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setBuyerOrderReferencedDocumentID(System.String)">
+             <summary>
+            *
+             usually the order number </summary>
+             <param name="buyerOrderReferencedDocumentID"> string with number </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setInvoiceReferencedDocumentID(System.String)">
+             <summary>
+            *
+             usually in case of a correction the original invoice number </summary>
+             <param name="invoiceReferencedDocumentID"> string with number </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setBuyerOrderReferencedDocumentIssueDateTime(System.String)">
+             <summary>
+            *
+             when the order (or whatever reference in BuyerOrderReferencedDocumentID) was issued (@todo switch to date?) </summary>
+             <param name="buyerOrderReferencedDocumentIssueDateTime">  IssueDateTime in format CCYY-MM-DDTHH:MM:SS </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setOwnContact(Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact)">
+             <summary>
+            *
+             sets a named sender contact </summary>
+             @deprecated use setSender 
+             <seealso cref="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact"/>
+             <param name="ownContact"> the sender contact </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setSender(Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty)">
+            <summary>
+            required.
+            sets the invoicing institution = invoicer </summary>
+            <param name="sender"> the invoicer </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setDeliveryAddress(Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty)">
+             <summary>
+            *
+             if the delivery address is not the recipient address, it can be specified here </summary>
+             <param name="deliveryAddress"> the goods receiving organisation </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.addItem(Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem)">
+            <summary>
+            required
+            adds invoice "lines" :-) </summary>
+            <seealso cref="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item"/>
+            <param name="item"> the invoice line </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="P:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.Valid">
+             <summary>
+            *
+             checks if all required items are set in order to be able to export it </summary>
+             <returns> true if all required items are set </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setContractReferencedDocument(System.String)">
+             <summary>
+            *
+             adds the ID of a contract referenced in the invoice </summary>
+             <param name="s"> the contract number </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Invoice.setDetailedDeliveryPeriod(System.DateTime,System.DateTime)">
+             <summary>
+            *
+             sets a document level delivery period,
+             which is optional additional to the mandatory deliverydate
+             and which will become a BillingSpecifiedPeriod-Element </summary>
+             <param name="start"> the date of first delivery </param>
+             <param name="end"> the date of last delivery </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item">
+             <summary>
+            *
+             describes any invoice line
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.#ctor(Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product,System.Decimal,System.Decimal)">
+             <summary>
+            *
+             default constructor </summary>
+             <param name="product"> contains the products name, tax rate, and unit </param>
+             <param name="price"> the base price of one item the product </param>
+             <param name="quantity"> the number, dimensions or the weight of the delivered product or good in this context </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.#ctor">
+             <summary>
+            *
+             empty constructor
+             do not use, but might be used e.g. by jackson
+             
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.getBuyerOrderReferencedDocumentLineID">
+             <summary>
+            *
+             BT 132 (issue https://github.com/ZUGFeRD/mustangproject/issues/247)
+             @return
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.setLineTotalAmount(System.Decimal)">
+            <summary>
+            should only be set by calculator classes or maybe when reading from XML </summary>
+            <param name="lineTotalAmount"> price*quantity of this line </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.setGrossPrice(System.Decimal)">
+             <summary>
+            *
+             the list price without VAT (sic!), refer to EN16931-1 for definition </summary>
+             <param name="grossPrice"> the list price without VAT </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.addNote(System.String)">
+             <summary>
+            *
+             adds item level freetext fields (includednote) </summary>
+             <param name="text"> UTF8 plain text </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.setDetailedDeliveryPeriod(System.DateTime,System.DateTime)">
+             <summary>
+            *
+             specify a item level delivery period
+             (apart from the document level delivery period, and the document level
+             delivery day, which is probably anyway required)
+             </summary>
+             <param name="from"> start date </param>
+             <param name="to"> end date </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.getDetailedDeliveryPeriodFrom">
+             <summary>
+            *
+             specifies the item level delivery period (there is also one on document level),
+             this will be included in a BillingSpecifiedPeriod element </summary>
+             <returns> the beginning of the delivery period </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Item.getDetailedDeliveryPeriodTo">
+             <summary>
+            *
+             specifies the item level delivery period (there is also one on document level),
+             this will be included in a BillingSpecifiedPeriod element </summary>
+             <returns> the end of the delivery period </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getID">
+            <summary>
+            customer identification assigned by the seller
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getName">
+            <summary>
+            First and last name of the recipient
+            </summary>
+            <returns> First and last name of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getZIP">
+            <summary>
+            Postal code of the recipient
+            </summary>
+            <returns> Postal code of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getVATID">
+            <summary>
+            VAT ID (Umsatzsteueridentifikationsnummer) of the contact
+            </summary>
+            <returns> VAT ID (Umsatzsteueridentifikationsnummer) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getCountry">
+            <summary>
+            two-letter country code of the contact
+            </summary>
+            <returns> two-letter iso country code of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getLocation">
+            <summary>
+            Returns the city of the contact
+            </summary>
+            <returns> Returns the city of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getStreet">
+            <summary>
+            Returns the street address (street+number) of the contact
+            </summary>
+            <returns> street address (street+number) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableContact.getAdditionalAddress">
+            <summary>
+            returns additional address information which is display in xml tag "LineTwo"
+            </summary>
+            <returns> additional address information </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getID">
+            <summary>
+            customer identification assigned by the seller
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getName">
+            <summary>
+            First and last name of the recipient
+            </summary>
+            <returns> First and last name of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getZIP">
+            <summary>
+            Postal code of the recipient
+            </summary>
+            <returns> Postal code of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getVATID">
+            <summary>
+            VAT ID (Umsatzsteueridentifikationsnummer) of the contact
+            </summary>
+            <returns> VAT ID (Umsatzsteueridentifikationsnummer) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getCountry">
+            <summary>
+            two-letter country code of the contact
+            </summary>
+            <returns> two-letter iso country code of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getLocation">
+            <summary>
+            Returns the city of the contact
+            </summary>
+            <returns> Returns the city of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getStreet">
+            <summary>
+            Returns the street address (street+number) of the contact
+            </summary>
+            <returns> street address (street+number) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableContact.getAdditionalAddress">
+            <summary>
+            returns additional address information which is display in xml tag "LineTwo"
+            </summary>
+            <returns> additional address information </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getBuyerOrderReferencedDocumentLineID">
+             <summary>
+             item level discounts </summary>
+             <returns> array of the discounts on a single item
+             
+             IZUGFeRDAllowanceCharge[] getItemAllowances() {
+             return null;
+             }
+             
+             **
+             item level price additions </returns>
+             <returns> array of the additional charges on the item
+             
+             IZUGFeRDAllowanceCharge[] getItemCharges() {
+             return null;
+             }
+              </returns>
+             <summary>
+            *
+             BT 132 (issue https://github.com/ZUGFeRD/mustangproject/issues/247)
+             @return
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getPrice">
+            <summary>
+            The price of one item excl. taxes
+            </summary>
+            <returns> The price of one item excl. taxes </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getQuantity">
+            <summary>
+            how many get billed
+            </summary>
+            <returns> the quantity of the item </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getBasisQuantity">
+            <summary>
+            how many items units per price
+            </summary>
+            <returns> item units per price </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getAdditionalReferencedDocumentID">
+             <summary>
+            *
+             the ID of an additionally referenced document for this item </summary>
+             <returns> the id as string </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getNotes">
+             <summary>
+            *
+             descriptive texts </summary>
+             <returns> an array of strings of item specific "includedNotes", text values </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getDetailedDeliveryPeriodFrom">
+             <summary>
+            *
+             specifies the item level delivery period (there is also one on document level),
+             this will be included in a BillingSpecifiedPeriod element </summary>
+             <returns> the beginning of the delivery period </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableItem.getDetailedDeliveryPeriodTo">
+             <summary>
+            *
+             specifies the item level delivery period (there is also one on document level),
+             this will be included in a BillingSpecifiedPeriod element </summary>
+             <returns> the end of the delivery period </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getBuyerOrderReferencedDocumentLineID">
+             <summary>
+             item level discounts </summary>
+             <returns> array of the discounts on a single item
+             
+             IZUGFeRDAllowanceCharge[] getItemAllowances() {
+             return null;
+             }
+             
+             **
+             item level price additions </returns>
+             <returns> array of the additional charges on the item
+             
+             IZUGFeRDAllowanceCharge[] getItemCharges() {
+             return null;
+             }
+              </returns>
+             <summary>
+            *
+             BT 132 (issue https://github.com/ZUGFeRD/mustangproject/issues/247)
+             @return
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getPrice">
+            <summary>
+            The price of one item excl. taxes
+            </summary>
+            <returns> The price of one item excl. taxes </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getQuantity">
+            <summary>
+            how many get billed
+            </summary>
+            <returns> the quantity of the item </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getBasisQuantity">
+            <summary>
+            how many items units per price
+            </summary>
+            <returns> item units per price </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getAdditionalReferencedDocumentID">
+             <summary>
+            *
+             the ID of an additionally referenced document for this item </summary>
+             <returns> the id as string </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getNotes">
+             <summary>
+            *
+             descriptive texts </summary>
+             <returns> an array of strings of item specific "includedNotes", text values </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getDetailedDeliveryPeriodFrom">
+             <summary>
+            *
+             specifies the item level delivery period (there is also one on document level),
+             this will be included in a BillingSpecifiedPeriod element </summary>
+             <returns> the beginning of the delivery period </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableItem.getDetailedDeliveryPeriodTo">
+             <summary>
+            *
+             specifies the item level delivery period (there is also one on document level),
+             this will be included in a BillingSpecifiedPeriod element </summary>
+             <returns> the end of the delivery period </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableProduct.getUnit">
+            
+            <summary>
+            HUR	hour
+            KGM	kilogram
+            KTM	kilometre
+            KWH	kilowatt hour
+            LS	lump sum
+            LTR	litre
+            MIN	minute
+            MMK	square millimetre
+            MMT	millimetre
+            MTK	square metre
+            MTQ	cubic metre
+            MTR	metre
+            NAR	number of articles
+            NPR	number of pairs
+            P1	percent
+            SET	set
+            TNE	tonne (metric ton)
+            WEE	week
+            </summary>
+            <returns> a UN/ECE rec 20 unit code see https://www.unece.org/fileadmin/DAM/cefact/recommendations/rec20/rec20_rev3_Annex2e.pdf </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableProduct.getName">
+            <summary>
+            Short name of the product
+            </summary>
+            <returns> Short name of the product </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableProduct.getDescription">
+            <summary>
+            long description of the product
+            </summary>
+            <returns> long description of the product </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableProduct.getSellerAssignedID">
+            <summary>
+            Get the ID that had been assigned by the seller to
+            identify the product
+            </summary>
+            <returns> seller assigned product ID </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableProduct.getBuyerAssignedID">
+            <summary>
+            Get the ID that had been assigned by the buyer to
+            identify the product
+            </summary>
+            <returns> buyer assigned product ID </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableProduct.getVATPercent">
+            <summary>
+            VAT percent of the product (e.g. 19, or 5.1 if you like)
+            </summary>
+            <returns> VAT percent of the product </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableProduct.getUnit">
+            
+            <summary>
+            HUR	hour
+            KGM	kilogram
+            KTM	kilometre
+            KWH	kilowatt hour
+            LS	lump sum
+            LTR	litre
+            MIN	minute
+            MMK	square millimetre
+            MMT	millimetre
+            MTK	square metre
+            MTQ	cubic metre
+            MTR	metre
+            NAR	number of articles
+            NPR	number of pairs
+            P1	percent
+            SET	set
+            TNE	tonne (metric ton)
+            WEE	week
+            </summary>
+            <returns> a UN/ECE rec 20 unit code see https://www.unece.org/fileadmin/DAM/cefact/recommendations/rec20/rec20_rev3_Annex2e.pdf </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableProduct.getName">
+            <summary>
+            Short name of the product
+            </summary>
+            <returns> Short name of the product </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableProduct.getDescription">
+            <summary>
+            long description of the product
+            </summary>
+            <returns> long description of the product </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableProduct.getSellerAssignedID">
+            <summary>
+            Get the ID that had been assigned by the seller to
+            identify the product
+            </summary>
+            <returns> seller assigned product ID </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableProduct.getBuyerAssignedID">
+            <summary>
+            Get the ID that had been assigned by the buyer to
+            identify the product
+            </summary>
+            <returns> buyer assigned product ID </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableProduct.getVATPercent">
+            <summary>
+            VAT percent of the product (e.g. 19, or 5.1 if you like)
+            </summary>
+            <returns> VAT percent of the product </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getID">
+            <summary>
+            customer identification assigned by the seller
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getGlobalID">
+            <summary>
+            customer global identification assigned by the seller
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getGlobalIDScheme">
+            <summary>
+            customer global identification scheme
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getName">
+            <summary>
+            First and last name of the recipient
+            </summary>
+            <returns> First and last name of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getZIP">
+            <summary>
+            Postal code of the recipient
+            </summary>
+            <returns> Postal code of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getVATID">
+            <summary>
+            VAT ID (Umsatzsteueridentifikationsnummer) of the contact
+            </summary>
+            <returns> VAT ID (Umsatzsteueridentifikationsnummer) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getCountry">
+            <summary>
+            two-letter country code of the contact
+            </summary>
+            <returns> two-letter iso country code of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getLocation">
+            <summary>
+            Returns the city of the contact
+            </summary>
+            <returns> Returns the city of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getStreet">
+            <summary>
+            Returns the street address (street+number) of the contact
+            </summary>
+            <returns> street address (street+number) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getAdditionalAddress">
+            <summary>
+            returns additional address information which is display in xml tag "LineTwo"
+            </summary>
+            <returns> additional address information </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty.getTaxID">
+             <summary>
+            *
+             obligatory for sender but not for recipient </summary>
+             <returns> the tax id as string </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getID">
+            <summary>
+            customer identification assigned by the seller
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getGlobalID">
+            <summary>
+            customer global identification assigned by the seller
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getGlobalIDScheme">
+            <summary>
+            customer global identification scheme
+            </summary>
+            <returns> customer identification </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getName">
+            <summary>
+            First and last name of the recipient
+            </summary>
+            <returns> First and last name of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getZIP">
+            <summary>
+            Postal code of the recipient
+            </summary>
+            <returns> Postal code of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getVATID">
+            <summary>
+            VAT ID (Umsatzsteueridentifikationsnummer) of the contact
+            </summary>
+            <returns> VAT ID (Umsatzsteueridentifikationsnummer) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getCountry">
+            <summary>
+            two-letter country code of the contact
+            </summary>
+            <returns> two-letter iso country code of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getLocation">
+            <summary>
+            Returns the city of the contact
+            </summary>
+            <returns> Returns the city of the recipient </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getStreet">
+            <summary>
+            Returns the street address (street+number) of the contact
+            </summary>
+            <returns> street address (street+number) of the contact </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getAdditionalAddress">
+            <summary>
+            returns additional address information which is display in xml tag "LineTwo"
+            </summary>
+            <returns> additional address information </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDExportableTradeParty.getTaxID">
+             <summary>
+            *
+             obligatory for sender but not for recipient </summary>
+             <returns> the tax id as string </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDTradeSettlement.getSettlementXML">
+            <summary>
+            Returns ZF2 XML for applicableHeaderTradeSettlement
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDTradeSettlement.getPaymentXML">
+            <summary>
+            Returns ZF2 XML for applicableHeaderTradePayment
+            </summary>
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDTradeSettlementPayment">
+            <summary>
+            **********************************************************************
+            
+            Copyright 2019 by ak on 12.04.19.
+            
+            Use is subject to license terms.
+            
+            Licensed under the Apache License, Version 2.0 (the "License"); you may not
+            use this file except in compliance with the License. You may obtain a copy
+            of the License at http://www.apache.org/licenses/LICENSE-2.0.
+            
+            Unless required by applicable law or agreed to in writing, software
+            distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+            WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+            
+            See the License for the specific language governing permissions and
+            limitations under the License.
+            
+            *********************************************************************** 
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDTradeSettlementPayment.getOwnPaymentInfoText">
+            <summary>
+            get payment information text. e.g. Bank transfer
+            </summary>
+            <returns> payment information text </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDTradeSettlementPayment.getOwnBIC">
+            <summary>
+            BIC of the sender
+            </summary>
+            <returns> the BIC code of the recipient sender's bank </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDTradeSettlementPayment.getOwnIBAN">
+            <summary>
+            IBAN of the sender
+            </summary>
+            <returns> the IBAN of the invoice sender's bank account </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDTradeSettlementPayment.getAccountName">
+             <summary>
+            *
+             Account name
+             </summary>
+             <returns> the name of the account holder (if not identical to sender) </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDTradeSettlementPayment.getOwnPaymentInfoText">
+            <summary>
+            get payment information text. e.g. Bank transfer
+            </summary>
+            <returns> payment information text </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDTradeSettlementPayment.getOwnBIC">
+            <summary>
+            BIC of the sender
+            </summary>
+            <returns> the BIC code of the recipient sender's bank </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDTradeSettlementPayment.getOwnIBAN">
+            <summary>
+            IBAN of the sender
+            </summary>
+            <returns> the IBAN of the invoice sender's bank account </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRDTradeSettlementPayment.getAccountName">
+             <summary>
+            *
+             Account name
+             </summary>
+             <returns> the name of the account holder (if not identical to sender) </returns>
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product">
+             <summary>
+            *
+             describes a product, good or service used in an invoice item line
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.#ctor(System.String,System.String,System.String,System.Decimal)">
+             <summary>
+            *
+             default constructor </summary>
+             <param name="name"> product short name </param>
+             <param name="description"> product long name </param>
+             <param name="unit"> a two/three letter UN/ECE rec 20 unit code, e.g. "C62" for piece </param>
+             <param name="VATPercent"> product vat rate </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.#ctor">
+             <summary>
+            *
+             empty constructor
+             just for jackson etc
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setSellerAssignedID(System.String)">
+             <summary>
+            *
+             how the seller identifies this type of product </summary>
+             <param name="sellerAssignedID"> a unique String </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setBuyerAssignedID(System.String)">
+             <summary>
+            *
+             if the buyer provided an ID how he refers to this product </summary>
+             <param name="buyerAssignedID"> a string the buyer provided </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setReverseCharge">
+             <summary>
+            *
+             sets reverse charge(=delivery to outside EU) </summary>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setIntraCommunitySupply">
+             <summary>
+            *
+             sets intra community supply(=delivery outside the country inside the EU) </summary>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setUnit(System.String)">
+             <summary>
+            *
+             sets a UN/ECE rec 20 or 21 code which unit the product ships in, e.g. C62=piece </summary>
+             <param name="unit"> 2-3 letter UN/ECE rec 20 or 21 </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setName(System.String)">
+            <summary>
+            name of the product </summary>
+            <param name="name"> short name </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setDescription(System.String)">
+            <summary>
+            description of the product (required) </summary>
+            <param name="description"> long name </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Product.setVATPercent(System.Decimal)">
+             <summary>
+            **
+             VAT rate of the product </summary>
+             <param name="VATPercent"> vat rate of the product </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Profile.#ctor(System.String,System.String)">
+             <summary>
+            *
+             Contruct </summary>
+             <param name="name"> human readable name of the profile, also used as basis to detemine the XMP Name </param>
+             <param name="ID"> XML Guideline ID </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Profile.getName">
+             <summary>
+            *
+             gets the name </summary>
+             <returns> the name of the profile </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Profile.getID">
+             <summary>
+            *
+             get guideline id </summary>
+             <returns> the XML Guideline ID of the profile </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Profile.getXMPName">
+             <summary>
+            *
+             if the profile is embedded in PDF we need RDF metadata </summary>
+             <returns> the XMP name string of the profile </returns>
+        </member>
+        <member name="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty">
+             <summary>
+            *
+             A organisation, i.e. usually a company
+             </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.#ctor">
+            <summary>
+            Default constructor.
+            Probably a bad idea but might be needed by jackson or similar
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="name"> of the company </param>
+            <param name="street"> street and number (use setAdditionalAddress for more parts) </param>
+            <param name="zip"> postcode of the company </param>
+            <param name="location"> city of the company </param>
+            <param name="country"> two letter ISO code </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setID(System.String)">
+            <summary>
+            if it's a customer, this can e.g. be the customer ID
+            </summary>
+            <param name="ID"> customer/seller number </param>
+            <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setContact(Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact)">
+             <summary>
+            *
+             (optional) a named contact person </summary>
+             <seealso cref="T:Ghostscript.NET.PDFA3Converter.ZUGFeRD.Contact"/>
+             <param name="c"> the named contact person </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.addBankDetails(Ghostscript.NET.PDFA3Converter.ZUGFeRD.BankDetails)">
+             <summary>
+            *
+             required (for senders, if payment is not debit): the BIC and IBAN </summary>
+             <param name="s"> bank credentials </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.addTaxID(System.String)">
+             <summary>
+            *
+             a general tax ID </summary>
+             <param name="taxID"> tax number of the organisation </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.addVATID(System.String)">
+             <summary>
+            *
+             the USt-ID </summary>
+             <param name="vatID"> Ust-ID </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setName(System.String)">
+             <summary>
+            *
+             required, usually done in the constructor: the complete name of the organisation </summary>
+             <param name="name"> complete legal name </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setZIP(System.String)">
+             <summary>
+            *
+             usually set in the constructor, required for recipients in german invoices: postcode </summary>
+             <param name="zip"> postcode </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setStreet(System.String)">
+             <summary>
+            *
+             usually set in constructor, required in germany, street and house number </summary>
+             <param name="street"> street name and number </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setLocation(System.String)">
+             <summary>
+            *
+             usually set in constructor, usually required in germany, the city of the organisation </summary>
+             <param name="location"> city </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setCountry(System.String)">
+             <summary>
+            *
+             two-letter ISO code of the country </summary>
+             <param name="country"> two-letter-code </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TradeParty.setAdditionalAddress(System.String)">
+             <summary>
+            *
+             additional parts of the address, e.g. which floor.
+             Street address will become "lineOne", this will become "lineTwo" </summary>
+             <param name="additionalAddress"> additional address description </param>
+             <returns> fluent setter </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TransactionCalculator.#ctor(Ghostscript.NET.PDFA3Converter.ZUGFeRD.IExportableTransaction)">
+             <summary>
+            *
+             </summary>
+             <param name="trans"> the invoice (or IExportableTransaction) to be calculated </param>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TransactionCalculator.getTotalPrepaid">
+             <summary>
+            *
+             if something had already been paid in advance, this will get it from the transaction </summary>
+             <returns> prepaid amount </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TransactionCalculator.getGrandTotal">
+             <summary>
+            *
+             the invoice total with VAT, corrected by prepaid amount, allowances and charges </summary>
+             <returns> the invoice total including taxes </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TransactionCalculator.getTotal">
+             <summary>
+            *
+             returns the total net value of all items, without document level charges/allowances </summary>
+             <returns> item sum </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TransactionCalculator.getTaxBasis">
+             <summary>
+            *
+             returns the total net value of the invoice, including charges/allowances on document
+             level </summary>
+             <returns> item sum +- charges/allowances </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.TransactionCalculator.getVATPercentAmountMap">
+            <summary>
+            which taxes have been used with which amounts in this transaction, empty for
+            no taxes, or e.g. 19:190 and 7:14 if 1000 Eur were applicable to 19% VAT
+            (=190 EUR VAT) and 200 EUR were applicable to 7% (=14 EUR VAT) 190 Eur
+            </summary>
+            <returns> which taxes have been used with which amounts in this invoice </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.VATAmount.getDocumentCode">
+            
+            @deprecated Use <seealso cref="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.VATAmount.getCategoryCode"/> 
+            Use this instead
+            <returns> String with category code </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.XMLTools.removeBOM(System.Byte[])">
+             <summary>
+            *
+             removes utf8 byte order marks from byte arrays, in case one is there </summary>
+             <param name="zugferdRaw"> the CII XML </param>
+             <returns> the byte array without bom </returns>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRD2PullProvider.setTest">
+            <summary>
+            enables the flag to indicate a test invoice in the XML structure
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.PDFA3Converter.ZUGFeRD.ZUGFeRD2PullProvider.getTradePartyAsXML(Ghostscript.NET.PDFA3Converter.ZUGFeRD.IZUGFeRDExportableTradeParty,System.Boolean,System.Boolean)">
+             <summary>
+            *
+             returns the UN/CEFACT CII XML for companies(tradeparties), which is actually
+             the same for ZF1 (v 2013b) and ZF2 (v 2016b) </summary>
+             <param name="party"> </param>
+             <param name="isSender"> some attributes are allowed only for senders in certain profiles </param>
+             <param name="isShipToTradeParty"> some attributes are allowed only for senders or recipients
+             @return </param>
+        </member>
+        <member name="M:Ghostscript.NET.Processor.GhostscriptProcessor.StartProcessing(System.String[],Ghostscript.NET.GhostscriptStdIO)">
+            <summary>
+            Run Ghostscript.
+            </summary>
+            <param name="args">Command arguments</param>
+            <param name="stdIO_callback">StdIO callback, can be set to null if you dont want to handle it.</param>
+        </member>
+        <member name="M:Ghostscript.NET.Rasterizer.GhostscriptRasterizer.Close">
+            <summary>
+            Close the GhostscriptRasterizer.
+            </summary>
+        </member>
+        <member name="P:Ghostscript.NET.Rasterizer.GhostscriptRasterizer.PageCount">
+            <summary>
+            Gets PDF page count.
+            </summary>
+        </member>
+        <member name="M:Ghostscript.NET.Rasterizer.GhostscriptRasterizer.GetPage(System.Int32,System.Int32)">
+            <summary>
+            Gets PDF page as System.Drawing.Image.
+            </summary>
+            <param name="dpi">Desired dpi.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>PDF page represented as System.Drawing.Image.</returns>
+        </member>
+        <member name="T:Microsoft.WinAny.Interop.DynamicNativeLibrary">
+            <summary>
+            Class that helps you to load and use native/unmanaged dynamic-link libraries dinamically.
+            It provides ability to load libraries from the memory or disk. 
+            It's compatibile with x86 and x64 libraries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the NativeLibrary class from a native module stored on disk.
+            </summary>
+            <param name="lpLibFileName">Native module file name.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the NativeLibrary class from a native module byte array.
+            </summary>
+            <param name="buffer">Native module byte array.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.MemoryLoadLibrary(System.Byte[])">
+            <summary>
+            Loads the specified native module from a byte array into the address space of the calling process.
+            </summary>
+            <param name="data">Native module byte array.</param>
+            <returns>If the function succeeds, the return value is a handle to the module.</returns>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.CopySections(System.Byte*,System.Byte*,Microsoft.WinAny.Interop.DynamicNativeLibrary.MEMORY_MODULE*)">
+            <summary>
+            Copies sections from a native module file block to the new memory location.
+            </summary>
+            <param name="ptr_data">Pointer to a native module byte array.</param>
+            <param name="ptr_old_headers">Pointer to a source native module headers.</param>
+            <param name="memory_module">Pointer to a memory module.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.PerformBaseRelocation(Microsoft.WinAny.Interop.DynamicNativeLibrary.MEMORY_MODULE*,System.UInt64)">
+            <summary>
+            Adjusts base address of the imported data.
+            </summary>
+            <param name="memory_module">Pointer to a memory module.</param>
+            <param name="delta">Adjustment delta value.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.BuildImportTable(Microsoft.WinAny.Interop.DynamicNativeLibrary.MEMORY_MODULE*)">
+            <summary>
+            Loads required dlls and adjust function table of the imports.
+            </summary>
+            <param name="memory_module">Pointer to a memory module.</param>
+            <returns>If the function succeeds, the return value is true.</returns>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.FinalizeSections(Microsoft.WinAny.Interop.DynamicNativeLibrary.MEMORY_MODULE*)">
+            <summary>
+            Marks memory pages depending on section headers and release sections that are marked as "discardable".
+            </summary>
+            <param name="memory_module">Pointer to a memory module.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.CallDllEntryPoint(Microsoft.WinAny.Interop.DynamicNativeLibrary.MEMORY_MODULE*,System.UInt32)">
+            <summary>
+            Calls module entry point.
+            </summary>
+            <param name="memory_module">Pointer to a memory module.</param>
+            <param name="fdwReason"></param>
+            <returns>If the function succeeds or if there is no entry point, the return value is true.</returns>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.MemoryFreeLibrary(System.IntPtr)">
+            <summary>
+            Deattach from the process and do a cleanup.
+            </summary>
+            <param name="hModule">Pointer to a memory module.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.GetDelegateForFunction(System.String,System.Type)">
+            <summary>
+            Retrieves a delegate of an exported function or variable from loaded module.
+            </summary>
+            <param name="procName">The function or variable name.</param>
+            <param name="delegateType">The type of the delegate to be returned.</param>
+            <returns>A function instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.GetDelegateForFunction``1(System.String)">
+            <summary>
+            Retrieves a delegate of an exported function or variable from loaded module.
+            </summary>
+            <typeparam name="T">Delegate type.</typeparam>
+            <param name="procName">The function or variable name.</param>
+            <returns>A function instance.</returns>
+        </member>
+        <member name="M:Microsoft.WinAny.Interop.DynamicNativeLibrary.GetProcAddress(System.String)">
+            <summary>
+            Retrieves the address of an exported function or variable from loaded module.
+            </summary>
+            <param name="procName">The function or variable name.</param>
+            <returns>
+            If the function succeeds, the return value is the address of the exported function or variable.
+            If the function fails, the return value is IntPtr.Zero.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WinAny.memory.memcpy(System.Byte*,System.Byte*,System.UInt32)">
+            <summary>
+            Copies bytes between buffers.
+            </summary>
+            <param name="dest">New buffer.</param>
+            <param name="src">Buffer to copy from.</param>
+            <param name="count">Number of characters to copy.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.memory.memset(System.Byte*,System.Byte,System.UInt32)">
+            <summary>
+            Sets buffers to a specified character.
+            </summary>
+            <param name="dest">Pointer to destination.</param>
+            <param name="c">Character to set.</param>
+            <param name="count">Number of characters.</param>
+        </member>
+        <member name="M:Microsoft.WinAny.memory.realloc(System.Byte*,System.UInt32,System.UInt32)">
+            <summary>
+            Reallocate memory blocks.
+            </summary>
+            <param name="memblock">Pointer to previously allocated memory block.</param>
+            <param name="size">Previously allocated memory block size.</param>
+            <param name="newsize">New size in bytes.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

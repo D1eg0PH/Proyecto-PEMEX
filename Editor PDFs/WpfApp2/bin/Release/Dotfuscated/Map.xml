@@ -1,0 +1,1249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
+<dotfuscatorMap version="1.1">
+    <header>
+        <timestamp>2025-11-30T23:31:33</timestamp>
+        <product version="6.5.3+7f0b0a9d18" user="Diego Perez">Dotfuscator Community</product>
+    </header>
+    <mapping>
+        <module>
+            <name>WpfApp2.exe</name>
+            <type>
+                <name>&lt;PrivateImplementationDetails&gt;</name>
+                <newname>a</newname>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=16</signature>
+                        <name>35CD1502DBE7ECC72740A5DB61396FCD6136DD1E7B74546CE4A5CF0C58299D82</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=32</signature>
+                        <name>37D9FDA59E2A0845294B4B021439B757874ECBFC796E93AC3C2A0E8AF026EAC0</name>
+                        <newname>b</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=16</name>
+                <newname>a/a</newname>
+                <methodlist />
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=32</name>
+                <newname>a/b</newname>
+                <methodlist />
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.AgregarUsuarioWindow</name>
+                <methodlist>
+                    <method>
+                        <signature>void(WpfApp2.Usuario)</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnCancelar_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnGuardar_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnSeleccionarFirma_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, object)</signature>
+                        <name>System.Windows.Markup.IComponentConnector.Connect</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_contentLoaded</name>
+                        <newname>g</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>_firmaPath</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>WpfApp2.Usuario</signature>
+                        <name>_usuarioEditar</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBlock</signature>
+                        <name>lblFirmaPath</name>
+                        <newname>f</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.PasswordBox</signature>
+                        <name>txtContrasena</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBox</signature>
+                        <name>txtNombre</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBox</signature>
+                        <name>txtRol</name>
+                        <newname>d</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.App</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Main</name>
+                    </method>
+                    <method>
+                        <signature>void(System.Windows.StartupEventArgs)</signature>
+                        <name>OnStartup</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.AstGeneratorWindow</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(iText.Layout.Document, string, float32, float32, bool)</signature>
+                        <name>AddText</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnGenerar_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, object)</signature>
+                        <name>System.Windows.Markup.IComponentConnector.Connect</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_FechaActual</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.Windows.Controls.Button</signature>
+                        <name>BtnGenerar</name>
+                        <newname>f</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBox</signature>
+                        <name>TxtEjecutor</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBlock</signature>
+                        <name>TxtFecha</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBox</signature>
+                        <name>TxtJefe</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBox</signature>
+                        <name>TxtNumero</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_contentLoaded</name>
+                        <newname>g</newname>
+                    </field>
+                    <field>
+                        <signature>System.Collections.Generic.Dictionary`2&lt;int32,System.Collections.Generic.Dictionary`2&lt;string,float32[]&gt;&gt;</signature>
+                        <name>coordenadas</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>string()</signature>
+                        <name>FechaActual</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.CustomFontResolver</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>unsigned int8[](string)</signature>
+                        <name>GetFont</name>
+                    </method>
+                    <method>
+                        <signature>PdfSharp.Fonts.FontResolverInfo(string, bool, bool)</signature>
+                        <name>ResolveTypeface</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.DatabaseManager</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.cctor</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, string, string, string, unsigned int8[])</signature>
+                        <name>ActualizarUsuario</name>
+                    </method>
+                    <method>
+                        <signature>void(string, string, string, unsigned int8[])</signature>
+                        <name>AgregarUsuario</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>CrearBaseDeDatos</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>unsigned int8[](unsigned int8[])</signature>
+                        <name>Desencriptar</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(int32)</signature>
+                        <name>EliminarUsuario</name>
+                    </method>
+                    <method>
+                        <signature>unsigned int8[](unsigned int8[])</signature>
+                        <name>Encriptar</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>unsigned int8[](int32, string)</signature>
+                        <name>ObtenerFirma</name>
+                    </method>
+                    <method>
+                        <signature>System.Collections.Generic.List`1&lt;WpfApp2.Usuario&gt;()</signature>
+                        <name>ObtenerUsuarios</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>string</signature>
+                        <name>DbPath</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>IV</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>Key</name>
+                        <newname>b</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.EditorElement</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(System.Windows.Controls.Canvas, float64, float64)</signature>
+                        <name>Render</name>
+                    </method>
+                    <method>
+                        <signature>System.Windows.UIElement()</signature>
+                        <name>get_UIElement</name>
+                    </method>
+                    <method>
+                        <signature>void(System.Windows.UIElement)</signature>
+                        <name>set_UIElement</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.Windows.UIElement</signature>
+                        <name>&lt;UIElement&gt;k__BackingField</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>System.Windows.UIElement()</signature>
+                        <name>UIElement</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.ImageElement</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(System.Windows.Controls.Canvas, float64, float64)</signature>
+                        <name>Render</name>
+                    </method>
+                    <method>
+                        <signature>float64()</signature>
+                        <name>get_Height</name>
+                    </method>
+                    <method>
+                        <signature>unsigned int8[]()</signature>
+                        <name>get_ImageBytes</name>
+                    </method>
+                    <method>
+                        <signature>float64()</signature>
+                        <name>get_Width</name>
+                    </method>
+                    <method>
+                        <signature>float64()</signature>
+                        <name>get_X</name>
+                    </method>
+                    <method>
+                        <signature>float64()</signature>
+                        <name>get_Y</name>
+                    </method>
+                    <method>
+                        <signature>void(float64)</signature>
+                        <name>set_Height</name>
+                    </method>
+                    <method>
+                        <signature>void(unsigned int8[])</signature>
+                        <name>set_ImageBytes</name>
+                    </method>
+                    <method>
+                        <signature>void(float64)</signature>
+                        <name>set_Width</name>
+                    </method>
+                    <method>
+                        <signature>void(float64)</signature>
+                        <name>set_X</name>
+                    </method>
+                    <method>
+                        <signature>void(float64)</signature>
+                        <name>set_Y</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>float64</signature>
+                        <name>&lt;Height&gt;k__BackingField</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>&lt;ImageBytes&gt;k__BackingField</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>float64</signature>
+                        <name>&lt;Width&gt;k__BackingField</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>float64</signature>
+                        <name>&lt;X&gt;k__BackingField</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>float64</signature>
+                        <name>&lt;Y&gt;k__BackingField</name>
+                        <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>float64()</signature>
+                        <name>Height</name>
+                    </property>
+                    <property>
+                        <signature>unsigned int8[]()</signature>
+                        <name>ImageBytes</name>
+                    </property>
+                    <property>
+                        <signature>float64()</signature>
+                        <name>Width</name>
+                    </property>
+                    <property>
+                        <signature>float64()</signature>
+                        <name>X</name>
+                    </property>
+                    <property>
+                        <signature>float64()</signature>
+                        <name>Y</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.IngresarContrasenaWindow</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnAceptar_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnCancelar_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, object)</signature>
+                        <name>System.Windows.Markup.IComponentConnector.Connect</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Contrasena</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_contentLoaded</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.PasswordBox</signature>
+                        <name>txtContrasena</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Contrasena</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.MainWindow</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnAcceptText_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnAddSignature_Click</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnAddText_Click</name>
+                        <newname>e</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnCancelText_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnCerrarOrden_Click</name>
+                        <newname>h</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnOpenPdf_Click</name>
+                        <newname>f</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnRedo_Click</name>
+                        <newname>i</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnSavePdf_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnUndo_Click</name>
+                        <newname>j</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Controls.SelectionChangedEventArgs)</signature>
+                        <name>CmbPages_SelectionChanged</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Input.MouseButtonEventArgs)</signature>
+                        <name>EditCanvas_MouseLeftButtonDown</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>System.Windows.Media.Brush(string)</signature>
+                        <name>GetBrushFromColorName</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeFontCombos</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Input.KeyEventArgs)</signature>
+                        <name>MainWindow_PreviewKeyDown</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>OpenPdf</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>RedoLastAction</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>RenderCurrentPage</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>SavePdfWithChanges</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Input.MouseWheelEventArgs)</signature>
+                        <name>ScrollViewer_PreviewMouseWheel</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(int32, object)</signature>
+                        <name>System.Windows.Markup.IComponentConnector.Connect</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>UndoLastAction</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>Window_Loaded</name>
+                        <newname>g</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Controls.SelectionChangedEventArgs)</signature>
+                        <name>cmbFontColor_SelectionChanged</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Controls.SelectionChangedEventArgs)</signature>
+                        <name>cmbFontFamily_SelectionChanged</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Controls.SelectionChangedEventArgs)</signature>
+                        <name>cmbFontSize_SelectionChanged</name>
+                        <newname>b</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>int32</signature>
+                        <name>RenderDpi</name>
+                        <newname>i</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.TextBox</signature>
+                        <name>_activeTextBox</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_contentLoaded</name>
+                        <newname>y</newname>
+                    </field>
+                    <field>
+                        <signature>int32</signature>
+                        <name>_currentPageIndex</name>
+                        <newname>c</newname>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>_firmaAInsertar</name>
+                        <newname>h</newname>
+                    </field>
+                    <field>
+                        <signature>System.Collections.Generic.List`1&lt;System.IO.MemoryStream&gt;</signature>
+                        <name>_imageStreams</name>
+                        <newname>n</newname>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_isAddingSignature</name>
+                        <newname>g</newname>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_isAddingText</name>
+                        <newname>f</newname>
+                    </field>
+                    <field>
+                        <signature>System.Collections.Generic.List`1&lt;System.Collections.Generic.List`1&lt;WpfApp2.EditorElement&gt;&gt;</signature>
+                        <name>_pageElements</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>_pdfBytes</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>PdfSharp.Pdf.PdfDocument</signature>
+                        <name>_pdfDocument</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>System.Collections.Generic.Stack`1&lt;WpfApp2.EditorElement&gt;</signature>
+                        <name>_redoStack</name>
+                        <newname>m</newname>
+                    </field>
+                    <field>
+                        <signature>System.Collections.Generic.List`1&lt;System.Windows.Media.Imaging.BitmapImage&gt;</signature>
+                        <name>_renderedPages</name>
+                        <newname>o</newname>
+                    </field>
+                    <field>
+                        <signature>float64</signature>
+                        <name>_scale</name>
+                        <newname>j</newname>
+                    </field>
+                    <field>
+                        <signature>System.Collections.Generic.Stack`1&lt;WpfApp2.EditorElement&gt;</signature>
+                        <name>_undoStack</name>
+                        <newname>l</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.ComboBox</signature>
+                        <name>cmbFontColor</name>
+                        <newname>x</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.ComboBox</signature>
+                        <name>cmbFontFamily</name>
+                        <newname>v</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.ComboBox</signature>
+                        <name>cmbFontSize</name>
+                        <newname>w</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.ComboBox</signature>
+                        <name>cmbPages</name>
+                        <newname>p</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.Canvas</signature>
+                        <name>editCanvas</name>
+                        <newname>s</newname>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>isAddingCerradoPM</name>
+                        <newname>k</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.Image</signature>
+                        <name>pdfPageImage</name>
+                        <newname>t</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Media.ScaleTransform</signature>
+                        <name>scaleTransform</name>
+                        <newname>r</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.ScrollViewer</signature>
+                        <name>scrollViewer</name>
+                        <newname>q</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.Grid</signature>
+                        <name>textPropertiesPanel</name>
+                        <newname>u</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.Properties.Resources</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>System.Globalization.CultureInfo()</signature>
+                        <name>get_Culture</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>System.Resources.ResourceManager()</signature>
+                        <name>get_ResourceManager</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void(System.Globalization.CultureInfo)</signature>
+                        <name>set_Culture</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.Globalization.CultureInfo</signature>
+                        <name>resourceCulture</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Resources.ResourceManager</signature>
+                        <name>resourceMan</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>System.Globalization.CultureInfo()</signature>
+                        <name>Culture</name>
+                    </property>
+                    <property>
+                        <signature>System.Resources.ResourceManager()</signature>
+                        <name>ResourceManager</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.Properties.Settings</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.cctor</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>WpfApp2.Properties.Settings()</signature>
+                        <name>get_Default</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>WpfApp2.Properties.Settings</signature>
+                        <name>defaultInstance</name>
+                        <newname>a</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>WpfApp2.Properties.Settings()</signature>
+                        <name>Default</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.SeleccionarUsuarioWindow</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnAceptar_Click</name>
+                        <newname>d</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnAgregarUsuario_Click</name>
+                        <newname>e</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnCancelar_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnEditarUsuario_Click</name>
+                        <newname>c</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnEliminarUsuario_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>CargarUsuarios</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, object)</signature>
+                        <name>System.Windows.Markup.IComponentConnector.Connect</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, object)</signature>
+                        <name>System.Windows.Markup.IStyleConnector.Connect</name>
+                    </method>
+                    <method>
+                        <signature>unsigned int8[]()</signature>
+                        <name>get_FirmaObtenida</name>
+                    </method>
+                    <method>
+                        <signature>WpfApp2.Usuario()</signature>
+                        <name>get_UsuarioSeleccionado</name>
+                    </method>
+                    <method>
+                        <signature>void(unsigned int8[])</signature>
+                        <name>set_FirmaObtenida</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(WpfApp2.Usuario)</signature>
+                        <name>set_UsuarioSeleccionado</name>
+                        <newname>a</newname>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>unsigned int8[]</signature>
+                        <name>&lt;FirmaObtenida&gt;k__BackingField</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>WpfApp2.Usuario</signature>
+                        <name>&lt;UsuarioSeleccionado&gt;k__BackingField</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_contentLoaded</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.ListBox</signature>
+                        <name>lstUsuarios</name>
+                        <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>unsigned int8[]()</signature>
+                        <name>FirmaObtenida</name>
+                    </property>
+                    <property>
+                        <signature>WpfApp2.Usuario()</signature>
+                        <name>UsuarioSeleccionado</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.SelectionWindow</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnAst_Click</name>
+                        <newname>a</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.RoutedEventArgs)</signature>
+                        <name>BtnEditar_Click</name>
+                        <newname>b</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>InitializeComponent</name>
+                    </method>
+                    <method>
+                        <signature>void(int32, object)</signature>
+                        <name>System.Windows.Markup.IComponentConnector.Connect</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.Windows.Controls.Button</signature>
+                        <name>BtnAst</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Controls.Button</signature>
+                        <name>BtnEditar</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
+                        <name>_contentLoaded</name>
+                        <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.TextElement</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(System.Windows.Controls.Canvas, float64, float64)</signature>
+                        <name>Render</name>
+                    </method>
+                    <method>
+                        <signature>System.Windows.Media.Color()</signature>
+                        <name>get_Color</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_FontName</name>
+                    </method>
+                    <method>
+                        <signature>float32()</signature>
+                        <name>get_FontSize</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Text</name>
+                    </method>
+                    <method>
+                        <signature>float64()</signature>
+                        <name>get_X</name>
+                    </method>
+                    <method>
+                        <signature>float64()</signature>
+                        <name>get_Y</name>
+                    </method>
+                    <method>
+                        <signature>void(System.Windows.Media.Color)</signature>
+                        <name>set_Color</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_FontName</name>
+                    </method>
+                    <method>
+                        <signature>void(float32)</signature>
+                        <name>set_FontSize</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_Text</name>
+                    </method>
+                    <method>
+                        <signature>void(float64)</signature>
+                        <name>set_X</name>
+                    </method>
+                    <method>
+                        <signature>void(float64)</signature>
+                        <name>set_Y</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>System.Windows.Media.Color</signature>
+                        <name>&lt;Color&gt;k__BackingField</name>
+                        <newname>f</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>&lt;FontName&gt;k__BackingField</name>
+                        <newname>d</newname>
+                    </field>
+                    <field>
+                        <signature>float32</signature>
+                        <name>&lt;FontSize&gt;k__BackingField</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>&lt;Text&gt;k__BackingField</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>float64</signature>
+                        <name>&lt;X&gt;k__BackingField</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>float64</signature>
+                        <name>&lt;Y&gt;k__BackingField</name>
+                        <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>System.Windows.Media.Color()</signature>
+                        <name>Color</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>FontName</name>
+                    </property>
+                    <property>
+                        <signature>float32()</signature>
+                        <name>FontSize</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Text</name>
+                    </property>
+                    <property>
+                        <signature>float64()</signature>
+                        <name>X</name>
+                    </property>
+                    <property>
+                        <signature>float64()</signature>
+                        <name>Y</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>WpfApp2.Usuario</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>int32()</signature>
+                        <name>get_Id</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Nombre</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Rol</name>
+                    </method>
+                    <method>
+                        <signature>void(int32)</signature>
+                        <name>set_Id</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_Nombre</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_Rol</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>int32</signature>
+                        <name>&lt;Id&gt;k__BackingField</name>
+                        <newname>a</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>&lt;Nombre&gt;k__BackingField</name>
+                        <newname>b</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>&lt;Rol&gt;k__BackingField</name>
+                        <newname>c</newname>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>int32()</signature>
+                        <name>Id</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Nombre</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Rol</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+        </module>
+    </mapping>
+    <statistics>
+        <statisticline>
+            <description>Total Classes</description>
+            <statistic>18</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Methods</description>
+            <statistic>124</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Fields</description>
+            <statistic>71</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Properties</description>
+            <statistic>22</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Events</description>
+            <statistic>0</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Classes Renamed</description>
+            <statistic>3</statistic>
+            <statistic>16.67 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Methods Renamed</description>
+            <statistic>48</statistic>
+            <statistic>38.71 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Fields Renamed</description>
+            <statistic>71</statistic>
+            <statistic>100.00 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Properties Renamed</description>
+            <statistic>0</statistic>
+            <statistic>0.00 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Total Events Renamed</description>
+            <statistic>0</statistic>
+            <statistic>0.00 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Methods Renamed to 'a'</description>
+            <statistic>21</statistic>
+            <statistic>16.94 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Methods Renamed to 'b'</description>
+            <statistic>10</statistic>
+            <statistic>8.06 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Methods Renamed to 'c'</description>
+            <statistic>6</statistic>
+            <statistic>4.84 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Methods Renamed to 'd'</description>
+            <statistic>4</statistic>
+            <statistic>3.23 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Methods Renamed to 'e'</description>
+            <statistic>2</statistic>
+            <statistic>1.61 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Methods Renamed to 'f'</description>
+            <statistic>1</statistic>
+            <statistic>0.81 %</statistic>
+        </statisticline>
+        <statisticline>
+            <description>Methods Renamed to 'g'</description>
+            <statistic>1</statistic>
+            <statistic>0.81 %</statistic>
+        </statisticline>
+    </statistics>
+</dotfuscatorMap>

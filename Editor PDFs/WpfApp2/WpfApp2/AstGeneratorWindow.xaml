@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfApp2.AstGeneratorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Generar AST" Height="350" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <StackPanel>
+            <Label Content="Nombre del Jefe:" Margin="0,0,0,5"/>
+            <TextBox Name="TxtJefe" Margin="0,0,0,10"/>
+
+            <Label Content="Nombre del Ejecutor:" Margin="0,0,0,5"/>
+            <TextBox Name="TxtEjecutor" Margin="0,0,0,10"/>
+
+            <Label Content="Número de AST/PDT:" Margin="0,0,0,5"/>
+            <TextBox Name="TxtNumero" Margin="0,0,0,20"/>
+
+            <TextBlock Name="TxtFecha" Text="{Binding FechaActual}" IsEnabled="False" Margin="0,0,0,20"/>
+
+            <Button Name="BtnGenerar" Content="Generar 9 Documentos AST" Click="BtnGenerar_Click" HorizontalAlignment="Center" Padding="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
